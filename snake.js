@@ -22,18 +22,22 @@ function Snake() {
   };
 
   this.death = function () {
+    // Check wall collision
+    if (this.x < 0 || this.x >= width || this.y < 0 || this.y >= height) {
+      console.log("Game Over! Starting over...");
+      return true;
+    }
+
+    // Check self-collision
     for (let i = 0; i < this.tail.length; i++) {
       let pos = this.tail[i];
       let d = dist(this.x, this.y, pos.x, pos.y);
       if (d < 1) {
         console.log("Game Over! Starting over...");
-        this.total = 0;
-        this.tail = [];
-        // Optionally, you can reset the score here as well.
-        score = 0; // Reset score on death
-        updateScore();
+        return true;
       }
     }
+    return false; // Game is still ongoing
   };
 
   this.update = function () {
@@ -47,15 +51,16 @@ function Snake() {
     this.x += this.xspeed * scl;
     this.y += this.yspeed * scl;
 
+    // Keep the snake within the bounds
     this.x = constrain(this.x, 0, width - scl);
     this.y = constrain(this.y, 0, height - scl);
   };
 
   this.show = function () {
-    fill(52, 152, 219); // Snake color
+    // Display snake image instead of rectangle
     for (let i = 0; i < this.tail.length; i++) {
-      rect(this.tail[i].x, this.tail[i].y, scl, scl);
+      image(snakeImage, this.tail[i].x, this.tail[i].y, scl, scl);
     }
-    rect(this.x, this.y, scl, scl);
+    image(snakeImage, this.x, this.y, scl, scl); // Show head
   };
 }

@@ -97,6 +97,12 @@
       <button id="hard">Hard</button>
     </div>
     <p id="score">Score: 0</p>
+    <audio id="bgMusic" loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-tomorrow.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="eatSound">
+      <source src="https://www.soundjay.com/button/sounds/button-3.mp3" type="audio/mpeg" />
+    </audio>
 
     <script>
       // Show the modal on page load
@@ -122,7 +128,7 @@
       function startGame() {
         document.getElementById("overlay").style.display = "none";
         document.getElementById("modal").style.display = "none";
-        // Initialize the game or reset variables here if needed
+        document.getElementById("bgMusic").play(); // Start background music
       }
     </script>
   </body>
