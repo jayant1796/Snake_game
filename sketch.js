@@ -7,11 +7,10 @@ let eatSound;
 let bgMusic;
 
 function preload() {
-  // Load the snake image from URL
+
   snakeImage = loadImage('https://images.unsplash.com/photo-1597010741881-2ff50f18e0e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHNua2V8ZW58MHx8fHwxNjcwNjg2MjM2&ixlib=rb-1.2.1&q=80&w=400');
-  eatSound = loadSound('https://www.soundjay.com/button/sounds/button-3.mp3'); // Replace with your eating sound link
-  bgMusic = loadSound('https://www.bensound.com/bensound-music/bensound-tomorrow.mp3'); // Replace with your background music link
-}
+  eatSound = loadSound('https://www.soundjay.com/button/sounds/button-3.mp3');
+  bgMusic = loadSound('https://www.bensound.com/bensound-music/bensound-tomorrow.mp3'); 
 
 function setup() {
   createCanvas(500, 500);
@@ -20,9 +19,9 @@ function setup() {
 
 function startGame() {
   s = new Snake();
-  frameRate(20); // Default frame rate
+  frameRate(20); 
   pickLocation();
-  score = 0; // Reset score
+  score = 0;
   updateScore();
 }
 
@@ -34,23 +33,23 @@ function pickLocation() {
 }
 
 function draw() {
-  background(34, 34, 34); // Dark background
+  background(34, 34, 34); 
 
   if (s.eat(food)) {
     pickLocation();
     score++;
     updateScore();
-    eatSound.play(); // Play eating sound
+    eatSound.play(); 
   }
 
   if (s.death()) {
-    startGame(); // Restart the game if the snake dies
+    startGame(); 
   }
 
   s.update();
   s.show();
 
-  // Food with a different color
+
   fill(255, 0, 100);
   rect(food.x, food.y, scl, scl);
 }
