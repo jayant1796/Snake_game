@@ -105,13 +105,13 @@
     </audio>
 
     <script>
-      // Show the modal on page load
+ 
       window.onload = function () {
         document.getElementById("overlay").style.display = "block";
         document.getElementById("modal").style.display = "block";
       };
 
-      // Handle difficulty selection
+     
       document.getElementById("easy").onclick = function () {
         frameRate(10);
         startGame();
@@ -128,7 +128,7 @@
       function startGame() {
         document.getElementById("overlay").style.display = "none";
         document.getElementById("modal").style.display = "none";
-        document.getElementById("bgMusic").play(); // Start background music
+        document.getElementById("bgMusic").play(); 
       }
     </script>
   </body>
